@@ -3,8 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'receipe-project';
+  welcomeMessage = '';
+
+  onClick() {
+    if (!this.welcomeMessage) {
+      this.welcomeMessage = 'Welcome again!!';
+    } else {
+      this.welcomeMessage = '';
+    }
+  }
 }
