@@ -10,7 +10,7 @@ export class AppComponent {
 
   onClick() {
     if (!this.welcomeMessage) {
-      this.welcomeMessage = 'Welcome again!!';
+      this.welcomeMessage = 'Welcome again, Dear!!';
     } else {
       this.welcomeMessage = '';
     }
