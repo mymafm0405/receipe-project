@@ -1,3 +1,4 @@
+import { Recepie } from './recepies/recepie.model';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   welcomeMessage = '';
+  view = 'recepie';
+  loadedRecepie: Recepie;
 
   onClick() {
     if (!this.welcomeMessage) {
@@ -14,5 +17,9 @@ export class AppComponent {
     } else {
       this.welcomeMessage = '';
     }
+  }
+
+  viewLink(event: string) {
+    this.view = event;
   }
 }

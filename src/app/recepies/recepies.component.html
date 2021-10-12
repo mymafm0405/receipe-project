@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-md-5">
-    <app-recepies-list></app-recepies-list>
+    <app-recepies-list (sendRecepie)="onGetRecepie($event)"></app-recepies-list>
   </div>
   <div class="col-md-7">
-    <app-recepie-details></app-recepie-details>
+    <app-recepie-details
+      *ngIf="recepie"
+      [currentRecepie]="recepie"
+    ></app-recepie-details>
   </div>
 </div>

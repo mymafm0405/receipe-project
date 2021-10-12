@@ -1,1 +1,14 @@
-<p>recepie-item works!</p>
+<a href="#" class="list-group-items" (click)="onRecepieClicked()">
+  <div class="pull-left">
+    <h4 class="list-group-heading">{{ recepie.name }}</h4>
+    <p class="list-group-text">{{ recepie.desc }}</p>
+  </div>
+  <span class="pull-right">
+    <img
+      [src]="recepie.imagePath"
+      [alt]="recepie.desc"
+      class="img-responsive"
+      style="max-height: 100px; width: 150px"
+    />
+  </span>
+</a>
