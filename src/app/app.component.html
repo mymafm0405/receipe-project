@@ -1,22 +1,12 @@
 <div class="container">
-  <!-- <div class="row">
+  <div class="row">
     <div class="col-md-12">
-      <h1>Receipt Project</h1>
-      <button
-        [ngClass]="{
-          'btn-danger': !welcomeMessage,
-          'btn-default': welcomeMessage
-        }"
-        class="btn"
-        (click)="onClick()"
-      >
-        {{ !welcomeMessage ? "Welcome" : "Hide welcome" }}
-      </button>
-      <h3>{{ welcomeMessage }}</h3>
+      <app-header (linkClicked)="viewLink($event)"></app-header>
+      <hr />
+      <app-recepies *ngIf="view === 'recepie'"></app-recepies>
+      <app-shopping-list *ngIf="view === 'shopping'"></app-shopping-list>
+      <p appBasicHighlight>Style me with a basic hightlight directive</p>
+      <p appBetterHighlight>Style me with a better hightlight directive</p>
     </div>
-  </div> -->
-  <app-header (linkClicked)="viewLink($event)"></app-header>
-  <hr />
-  <app-recepies *ngIf="view === 'recepie'"></app-recepies>
-  <app-shopping-list *ngIf="view === 'shopping'"></app-shopping-list>
+  </div>
 </div>
