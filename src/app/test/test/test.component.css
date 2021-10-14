@@ -1,0 +1,14 @@
+td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+th {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.nowSorted {
+  background-color: aquamarine;
+}

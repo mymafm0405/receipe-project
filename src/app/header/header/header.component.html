@@ -9,6 +9,9 @@
         <li>
           <a (click)="onSelect('shopping')" class="nav-link">Shopping List</a>
         </li>
+        <li>
+          <a (click)="onSelect('test')" class="nav-link">Test Component</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -24,3 +27,4 @@
     </div>
   </div>
 </nav>
+<h1 *ngIf="myProfile">{{ myProfile.name }}</h1>

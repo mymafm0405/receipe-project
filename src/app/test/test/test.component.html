@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <tr>
+        <th
+          [ngClass]="{ nowSorted: sortedBy === 'name' }"
+          (click)="onSortBy('name')"
+        >
+          Name
+          <span
+            *ngIf="order === 'asc'"
+            class="glyphicon glyphicon-chevron-down"
+          ></span>
+          <span
+            *ngIf="order === 'desc'"
+            class="glyphicon glyphicon-chevron-down"
+          ></span>
+        </th>
+        <th
+          [ngClass]="{ nowSorted: sortedBy === 'age' }"
+          (click)="onSortBy('age')"
+        >
+          Age
+          <span
+            *ngIf="order === 'asc'"
+            class="glyphicon glyphicon-chevron-down"
+          ></span>
+          <span
+            *ngIf="order === 'desc'"
+            class="glyphicon glyphicon-chevron-down"
+          ></span>
+        </th>
+        <th
+          [ngClass]="{ nowSorted: sortedBy === 'salary' }"
+          (click)="onSortBy('salary')"
+        >
+          Salary
+          <span
+            *ngIf="order === 'asc'"
+            class="glyphicon glyphicon-chevron-down"
+          ></span>
+          <span
+            *ngIf="order === 'desc'"
+            class="glyphicon glyphicon-chevron-down"
+          ></span>
+        </th>
+      </tr>
+      <tr *ngFor="let person of myFamily">
+        <td>{{ person.name }}</td>
+        <td>{{ person.age }}</td>
+        <td>{{ person.salary }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { HeaderComponent } from './header/header/header.component';
 import { BasicHighlightDirective } from './directives/basic-highlight.directive';
 import { BetterHighlightDirective } from './directives/better-highlight.directive';
+import { TestComponent } from './test/test/test.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BetterHighlightDirective } from './directives/better-highlight.directiv
     HeaderComponent,
     BasicHighlightDirective,
     BetterHighlightDirective,
+    TestComponent,
   ],
   imports: [BrowserModule],
   providers: [],
