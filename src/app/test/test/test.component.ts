@@ -53,10 +53,20 @@ export class TestComponent implements OnInit {
   onSortBy(title: string) {
     if (title === 'name') {
       this.sortedBy = title;
-      this.order === 'asc' ? (this.order = 'desc') : (this.order = 'asc');
       this.order === 'asc'
         ? this.myFamily.sort((a, b) => (a.name > b.name ? -1 : 1))
         : this.myFamily.sort((a, b) => (a.name > b.name ? 1 : -1));
+    } else if (title === 'age') {
+      this.sortedBy = title;
+      this.order === 'asc'
+        ? this.myFamily.sort((a, b) => a.age - b.age)
+        : this.myFamily.sort((a, b) => b.age - a.age);
+    } else if (title === 'salary') {
+      this.sortedBy = title;
+      this.order === 'asc'
+        ? this.myFamily.sort((a, b) => a.salary - b.salary)
+        : this.myFamily.sort((a, b) => b.salary - a.salary);
     }
+    this.order === 'asc' ? (this.order = 'desc') : (this.order = 'asc');
   }
 }
