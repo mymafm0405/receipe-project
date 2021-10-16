@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 interface Person {
+  id: number;
   name: string;
   age: number;
   salary: number;
@@ -14,40 +18,33 @@ export class TestComponent implements OnInit {
   sortedBy: string;
   order: string;
 
-  myFamily: Person[] = [
-    {
-      name: 'Mahmoud',
-      age: 37,
-      salary: 4000,
-    },
-    {
-      name: 'Asmaa',
-      age: 33,
-      salary: 15600,
-    },
-    {
-      name: 'Basem',
-      age: 26,
-      salary: 2000,
-    },
-    {
-      name: 'Mom',
-      age: 60,
-      salary: 1000,
-    },
-    {
-      name: 'Dad',
-      age: 65,
-      salary: 3000,
-    },
-  ];
+  myFamily: Person[] = [];
+  familyApiUrl = 'http://localhost:5000/myfamily';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.getFamily();
     this.order = 'asc';
     this.sortedBy = 'name';
     this.myFamily.sort((a, b) => (a.name > b.name ? 1 : -1));
+  }
+
+  getFamily() {
+    this.http.get<Person[]>(this.familyApiUrl).subscribe((data) => {
+      this.myFamily = data;
+    });
+  }
+
+  addPerson(newPerson: Person) {
+    this.http.post(this.familyApiUrl, newPerson).subscribe(
+      () => {
+        console.log('done');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   onSortBy(title: string) {

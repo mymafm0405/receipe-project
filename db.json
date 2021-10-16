@@ -1,19 +1,47 @@
 {
-  "posts": [
+  "myfamily": [
+    {
+      "name": "Mahmoud",
+      "age": 37,
+      "salary": 4000
+    },
+    {
+      "name": "Asmaa",
+      "age": 33,
+      "salary": 15600
+    },
+    {
+      "name": "Basem",
+      "age": 26,
+      "salary": 2000
+    },
+    {
+      "name": "Mom",
+      "age": 60,
+      "salary": 1000
+    },
+    {
+      "name": "Dad",
+      "age": 65,
+      "salary": 3000
+    },
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "mido",
+      "age": 30,
+      "salary": 7000
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 7,
+      "name": "mido",
+      "age": 30,
+      "salary": 7000
+    },
+    {
+      "id": 8,
+      "name": "mido",
+      "age": 30,
+      "salary": 7000
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
