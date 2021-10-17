@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header/header.component';
 import { BasicHighlightDirective } from './directives/basic-highlight.directive';
 import { BetterHighlightDirective } from './directives/better-highlight.directive';
 import { TestComponent } from './test/test/test.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TestComponent } from './test/test/test.component';
     HeaderComponent,
     BasicHighlightDirective,
     BetterHighlightDirective,
+    DropdownDirective,
     TestComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
