@@ -1,14 +1,19 @@
 import { Recepie } from './recepie.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RecepieService } from './recepie.service';
 
 @Component({
   selector: 'app-recepies',
   templateUrl: './recepies.component.html',
 })
-export class RecepiesComponent {
+export class RecepiesComponent implements OnInit {
   recepie: Recepie;
 
-  onGetRecepie(currentRecepie: Recepie) {
-    this.recepie = currentRecepie;
+  constructor(private recepieService: RecepieService) {}
+
+  ngOnInit() {
+    this.recepieService.getCurrentRecepie.subscribe((rec: Recepie) => {
+      this.recepie = rec;
+    });
   }
 }

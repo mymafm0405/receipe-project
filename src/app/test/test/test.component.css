@@ -16,6 +16,9 @@ th {
   color: red;
   cursor: pointer;
 }
+.delete:hover {
+  font-size: 130%;
+}
 .btn {
   margin-top: 25px;
 }
