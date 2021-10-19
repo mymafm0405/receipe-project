@@ -15,6 +15,10 @@ interface Person {
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit {
+  personName = '';
+  personAge = 0;
+  personSalary = 0;
+
   sortedBy: string;
   order: string;
 
@@ -65,5 +69,26 @@ export class TestComponent implements OnInit {
         : this.myFamily.sort((a, b) => b.salary - a.salary);
     }
     this.order === 'asc' ? (this.order = 'desc') : (this.order = 'asc');
+  }
+
+  onDelete(id: number) {
+    this.http.delete(this.familyApiUrl + '/' + id).subscribe(() => {
+      this.myFamily = this.myFamily.filter((person) => person.id !== id);
+    });
+  }
+
+  onAdd() {
+    const newPerson = {
+      id: this.myFamily.length + 1,
+      name: this.personName,
+      age: this.personAge,
+      salary: this.personSalary,
+    };
+    this.http.post(this.familyApiUrl, newPerson).subscribe(() => {
+      this.myFamily.push(newPerson);
+      this.personName = '';
+      this.personAge = 0;
+      this.personSalary = 0;
+    });
   }
 }

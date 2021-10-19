@@ -1,47 +1,28 @@
 {
   "myfamily": [
     {
-      "name": "Mahmoud",
-      "age": 37,
-      "salary": 4000
-    },
-    {
-      "name": "Asmaa",
-      "age": 33,
-      "salary": 15600
-    },
-    {
+      "id": 5,
       "name": "Basem",
       "age": 26,
       "salary": 2000
     },
     {
+      "id": 6,
       "name": "Mom",
       "age": 60,
       "salary": 1000
     },
     {
-      "name": "Dad",
-      "age": 65,
-      "salary": 3000
+      "id": 3,
+      "name": "Ismail",
+      "age": 39,
+      "salary": 6000
     },
     {
-      "id": 1,
-      "name": "mido",
-      "age": 30,
-      "salary": 7000
-    },
-    {
-      "id": 7,
-      "name": "mido",
-      "age": 30,
-      "salary": 7000
-    },
-    {
-      "id": 8,
-      "name": "mido",
-      "age": 30,
-      "salary": 7000
+      "id": 4,
+      "name": "Mahmoud",
+      "age": 37,
+      "salary": 4000
     }
   ]
 }

@@ -12,3 +12,10 @@ th {
 .nowSorted {
   background-color: aquamarine;
 }
+.delete {
+  color: red;
+  cursor: pointer;
+}
+.btn {
+  margin-top: 25px;
+}
