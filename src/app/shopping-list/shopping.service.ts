@@ -15,7 +15,10 @@ export class ShoppingService {
   }
 
   addIng(newIng: Ingredient) {
-    this.ingredients.push(newIng);
+    const foundIng = this.ingredients.find((ing) => ing.name === newIng.name);
+    foundIng
+      ? (foundIng.amount = foundIng.amount + newIng.amount)
+      : this.ingredients.push(newIng);
     this.updatedIngs.emit(this.ingredients.slice());
   }
 }

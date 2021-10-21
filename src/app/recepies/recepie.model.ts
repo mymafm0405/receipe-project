@@ -1,7 +1,9 @@
+import { Ingredient } from './../shared/ingredient.model';
 export class Recepie {
   constructor(
     public name: string,
     public desc: string,
-    public imagePath: string
+    public imagePath: string,
+    public ings: Ingredient[]
   ) {}
 }
