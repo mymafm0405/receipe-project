@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 interface Person {
-  id: number;
+  id: string;
   name: string;
   age: number;
   salary: number;
@@ -25,6 +23,11 @@ export class TestComponent implements OnInit {
   myFamily: Person[] = [];
   familyApiUrl = 'http://localhost:5000/myfamily';
 
+  showServerError = false;
+  loading = true;
+  currentLoading = 0;
+  currentInt: any;
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -35,9 +38,35 @@ export class TestComponent implements OnInit {
   }
 
   getFamily() {
-    this.http.get<Person[]>(this.familyApiUrl).subscribe((data) => {
-      this.myFamily = data;
-    });
+    this.currentInt = setInterval(() => {
+      if (this.currentLoading === 100) {
+        clearInt();
+        loadData();
+      } else {
+        this.currentLoading = this.currentLoading + 1;
+      }
+    }, 10);
+
+    const clearInt = () => {
+      clearInterval(this.currentInt);
+    };
+
+    const loadData = () => {
+      this.http.get<Person[]>(this.familyApiUrl).subscribe(
+        (data) => {
+          this.loading = false;
+          this.myFamily = data;
+        },
+        (error) => {
+          this.loading = false;
+          console.log(error.status);
+          if (error.status === 0) {
+            this.showServerError = true;
+          }
+          console.log(error);
+        }
+      );
+    };
   }
 
   addPerson(newPerson: Person) {
@@ -71,7 +100,7 @@ export class TestComponent implements OnInit {
     this.order === 'asc' ? (this.order = 'desc') : (this.order = 'asc');
   }
 
-  onDelete(id: number) {
+  onDelete(id: string) {
     this.http.delete(this.familyApiUrl + '/' + id).subscribe(() => {
       this.myFamily = this.myFamily.filter((person) => person.id !== id);
     });
@@ -79,7 +108,7 @@ export class TestComponent implements OnInit {
 
   onAdd() {
     const newPerson = {
-      id: this.myFamily.length + 1,
+      id: 'app' + this.personName + this.myFamily.length,
       name: this.personName,
       age: this.personAge,
       salary: this.personSalary,

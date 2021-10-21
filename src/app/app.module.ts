@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { RecepiesComponent } from './recepies/recepies.component';
@@ -14,7 +18,20 @@ import { BasicHighlightDirective } from './directives/basic-highlight.directive'
 import { BetterHighlightDirective } from './directives/better-highlight.directive';
 import { TestComponent } from './test/test/test.component';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { FormsModule } from '@angular/forms';
+import { MidoComponent } from './mido/mido.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { Mido2Component } from './mido2/mido2.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ExpansionOverviewExample } from './expansion/expansion.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +47,30 @@ import { FormsModule } from '@angular/forms';
     BetterHighlightDirective,
     DropdownDirective,
     TestComponent,
+    MidoComponent,
+    Mido2Component,
+    ExpansionOverviewExample,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatProgressBarModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatExpansionModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

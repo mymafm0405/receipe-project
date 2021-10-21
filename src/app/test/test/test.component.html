@@ -100,5 +100,13 @@
         </td>
       </tr>
     </table>
+    <mat-progress-bar
+      *ngIf="currentLoading < 100"
+      mode="determinate"
+      [value]="currentLoading"
+    ></mat-progress-bar>
+    <app-expansion-overview-example></app-expansion-overview-example>
+    <h3 class="loading" *ngIf="loading">Loading...{{ currentLoading }} %</h3>
+    <h4 class="err" *ngIf="showServerError">Server might be offline...</h4>
   </div>
 </div>

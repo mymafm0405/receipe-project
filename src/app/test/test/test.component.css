@@ -22,3 +22,12 @@ th {
 .btn {
   margin-top: 25px;
 }
+.err {
+  color: red;
+  font-style: italic;
+  text-align: center;
+}
+.loading {
+  color: green;
+  text-align: center;
+}
