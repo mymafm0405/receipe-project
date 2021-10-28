@@ -32,6 +32,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpansionOverviewExample } from './expansion/expansion.component';
+import { RouterModule, Routes } from '@angular/router';
+import { StartComponent } from './recepies/start/start.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/recepies', pathMatch: 'full' },
+  {
+    path: 'recepies',
+    component: RecepiesComponent,
+    children: [
+      { path: '', component: StartComponent, pathMatch: 'full' },
+      { path: ':id', component: RecepieDetailsComponent },
+    ],
+  },
+  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'test', component: TestComponent },
+];
 
 @NgModule({
   declarations: [
@@ -50,6 +66,7 @@ import { ExpansionOverviewExample } from './expansion/expansion.component';
     MidoComponent,
     Mido2Component,
     ExpansionOverviewExample,
+    StartComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +87,7 @@ import { ExpansionOverviewExample } from './expansion/expansion.component';
     MatIconModule,
     MatListModule,
     MatExpansionModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent],

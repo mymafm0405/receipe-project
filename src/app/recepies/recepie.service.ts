@@ -4,8 +4,6 @@ import { Ingredient } from '../shared/ingredient.model';
 
 @Injectable({ providedIn: 'root' })
 export class RecepieService {
-  getCurrentRecepie = new EventEmitter<Recepie>();
-
   recepie: Recepie[] = [
     new Recepie(
       'A test recepie',
@@ -23,5 +21,9 @@ export class RecepieService {
 
   getRecepies() {
     return this.recepie.slice();
+  }
+
+  getCurrentRecepie(currentIndex: number) {
+    return this.recepie[currentIndex];
   }
 }

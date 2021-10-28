@@ -10,7 +10,6 @@ interface PROFILE {
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() linkClicked = new EventEmitter<string>();
   myNumber = 10;
   myProfile: PROFILE;
   constructor() {}
@@ -43,9 +42,5 @@ export class HeaderComponent implements OnInit {
     //     }
     //   };
     //   testAsync();
-  }
-
-  onSelect(link: string) {
-    this.linkClicked.emit(link);
   }
 }

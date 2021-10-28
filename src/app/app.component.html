@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-header (linkClicked)="viewLink($event)"></app-header>
+      <app-header></app-header>
       <hr />
-      <app-recepies *ngIf="view === 'recepie'"></app-recepies>
-      <app-shopping-list *ngIf="view === 'shopping'"></app-shopping-list>
-      <app-test *ngIf="view === 'test'"></app-test>
+      <router-outlet></router-outlet>
       <!-- <p appBasicHighlight>Style me with a basic hightlight directive</p>
       <p appBetterHighlight>Style me with a better hightlight directive</p> -->
     </div>

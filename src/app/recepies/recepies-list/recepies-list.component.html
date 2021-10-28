@@ -9,7 +9,8 @@
     <app-recepie-item
       (showRecepie)="onRecieveRecepie($event)"
       [recepie]="recepie"
-      *ngFor="let recepie of recepies"
+      [currentIndex]="i"
+      *ngFor="let recepie of recepies; let i = index"
     ></app-recepie-item>
   </div>
 </div>

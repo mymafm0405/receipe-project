@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recepie } from '../../recepie.model';
 import { RecepieService } from '../../recepie.service';
 
@@ -9,12 +10,17 @@ import { RecepieService } from '../../recepie.service';
 })
 export class RecepieItemComponent implements OnInit {
   @Input() recepie: Recepie;
+  @Input() currentIndex: number;
 
-  constructor(private recepieService: RecepieService) {}
+  constructor(
+    private recepieService: RecepieService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
 
   onRecepieClicked() {
-    this.recepieService.getCurrentRecepie.emit(this.recepie);
+    this.router.navigate([this.currentIndex], { relativeTo: this.route });
   }
 }

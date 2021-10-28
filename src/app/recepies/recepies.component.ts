@@ -11,9 +11,5 @@ export class RecepiesComponent implements OnInit {
 
   constructor(private recepieService: RecepieService) {}
 
-  ngOnInit() {
-    this.recepieService.getCurrentRecepie.subscribe((rec: Recepie) => {
-      this.recepie = rec;
-    });
-  }
+  ngOnInit() {}
 }
