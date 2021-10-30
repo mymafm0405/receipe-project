@@ -34,6 +34,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpansionOverviewExample } from './expansion/expansion.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StartComponent } from './recepies/start/start.component';
+import { EditRecepieComponent } from './recepies/edit-recepie/edit-recepie.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recepies', pathMatch: 'full' },
@@ -42,6 +43,8 @@ const appRoutes: Routes = [
     component: RecepiesComponent,
     children: [
       { path: '', component: StartComponent, pathMatch: 'full' },
+      { path: 'new', component: EditRecepieComponent },
+      { path: ':id/edit', component: EditRecepieComponent },
       { path: ':id', component: RecepieDetailsComponent },
     ],
   },
@@ -67,6 +70,7 @@ const appRoutes: Routes = [
     Mido2Component,
     ExpansionOverviewExample,
     StartComponent,
+    EditRecepieComponent,
   ],
   imports: [
     BrowserModule,
