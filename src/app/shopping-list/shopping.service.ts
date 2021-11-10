@@ -32,4 +32,9 @@ export class ShoppingService {
     this.ingredients[index] = ing;
     this.updatedIngs.next(this.ingredients.slice());
   }
+
+  deleteIng(index: number) {
+    this.ingredients.splice(index, 1);
+    this.updatedIngs.next(this.ingredients.slice());
+  }
 }
