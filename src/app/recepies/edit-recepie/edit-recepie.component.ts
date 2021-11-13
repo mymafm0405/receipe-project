@@ -1,6 +1,6 @@
 import { RecepieService } from './../recepie.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Recepie } from '../recepie.model';
 
@@ -35,6 +35,7 @@ export class EditRecepieComponent implements OnInit {
     let recName = '';
     let recImagePath = '';
     let recDescription = '';
+    let ings = new FormArray([]);
 
     if (this.editMode) {
       const currentRecepie: Recepie = this.recepiesService.getCurrentRecepie(
@@ -43,11 +44,26 @@ export class EditRecepieComponent implements OnInit {
       recName = currentRecepie.name;
       recImagePath = currentRecepie.imagePath;
       recDescription = currentRecepie.desc;
+      if (currentRecepie['ings']) {
+        for (let ing of currentRecepie.ings) {
+          ings.push(
+            new FormGroup({
+              name: new FormControl(ing.name),
+              amount: new FormControl(ing.amount),
+            })
+          );
+        }
+      }
     }
     this.recepieForm = new FormGroup({
       name: new FormControl(recName),
       imagePath: new FormControl(recImagePath),
       description: new FormControl(recDescription),
+      ings,
     });
+  }
+
+  getIngs() {
+    return (<FormArray>this.recepieForm.get('ings')).controls;
   }
 }
