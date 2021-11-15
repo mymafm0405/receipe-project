@@ -1,6 +1,6 @@
 import { RecepieService } from './../recepie.service';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Recepie } from '../recepie.model';
 
@@ -29,6 +29,12 @@ export class EditRecepieComponent implements OnInit {
 
   onSave() {
     console.log(this.recepieForm);
+    if (this.editMode) {
+      this.recepiesService.updateRecepies(this.id, this.recepieForm.value);
+    } else {
+      console.log('hi');
+      this.recepiesService.addRecepie(this.recepieForm.value);
+    }
   }
 
   private initForm() {
@@ -43,27 +49,42 @@ export class EditRecepieComponent implements OnInit {
       );
       recName = currentRecepie.name;
       recImagePath = currentRecepie.imagePath;
-      recDescription = currentRecepie.desc;
+      recDescription = currentRecepie.description;
       if (currentRecepie['ings']) {
         for (let ing of currentRecepie.ings) {
           ings.push(
             new FormGroup({
-              name: new FormControl(ing.name),
-              amount: new FormControl(ing.amount),
+              name: new FormControl(ing.name, Validators.required),
+              amount: new FormControl(ing.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/),
+              ]),
             })
           );
         }
       }
     }
     this.recepieForm = new FormGroup({
-      name: new FormControl(recName),
-      imagePath: new FormControl(recImagePath),
-      description: new FormControl(recDescription),
+      name: new FormControl(recName, Validators.required),
+      imagePath: new FormControl(recImagePath, Validators.required),
+      description: new FormControl(recDescription, Validators.required),
       ings,
     });
   }
 
   getIngs() {
     return (<FormArray>this.recepieForm.get('ings')).controls;
+  }
+
+  onAddIng() {
+    (<FormArray>this.recepieForm.get('ings')).push(
+      new FormGroup({
+        name: new FormControl(null, Validators.required),
+        amount: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/),
+        ]),
+      })
+    );
   }
 }

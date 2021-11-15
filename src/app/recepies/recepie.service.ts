@@ -1,10 +1,13 @@
 import { Recepie } from './recepie.model';
 import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecepieService {
-  recepie: Recepie[] = [
+  recepiesUpdated = new Subject<Recepie[]>();
+
+  recepies: Recepie[] = [
     new Recepie(
       'A test recepie',
       'Some details about this item',
@@ -20,10 +23,20 @@ export class RecepieService {
   ];
 
   getRecepies() {
-    return this.recepie.slice();
+    return this.recepies.slice();
   }
 
   getCurrentRecepie(currentIndex: number) {
-    return this.recepie[currentIndex];
+    return this.recepies[currentIndex];
+  }
+
+  addRecepie(newRecepie: Recepie) {
+    this.recepies.push(newRecepie);
+    this.recepiesUpdated.next(this.recepies.slice());
+  }
+
+  updateRecepies(index: number, recepie: Recepie) {
+    this.recepies[index] = recepie;
+    this.recepiesUpdated.next(this.recepies.slice());
   }
 }
