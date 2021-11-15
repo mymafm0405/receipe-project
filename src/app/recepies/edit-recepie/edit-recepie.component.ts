@@ -33,7 +33,6 @@ export class EditRecepieComponent implements OnInit {
     if (this.editMode) {
       this.recepiesService.updateRecepies(this.id, this.recepieForm.value);
     } else {
-      console.log('hi');
       this.recepiesService.addRecepie(this.recepieForm.value);
     }
     this.onCancel();
@@ -91,5 +90,9 @@ export class EditRecepieComponent implements OnInit {
         ]),
       })
     );
+  }
+
+  onDeleteIng(index: number) {
+    (<FormArray>this.recepieForm.get('ings')).removeAt(index);
   }
 }
