@@ -39,4 +39,9 @@ export class RecepieService {
     this.recepies[index] = recepie;
     this.recepiesUpdated.next(this.recepies.slice());
   }
+
+  deleteRecepie(index: number) {
+    this.recepies.splice(index, 1);
+    this.recepiesUpdated.next(this.recepies.slice());
+  }
 }
